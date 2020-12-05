@@ -1,0 +1,5 @@
+vfxgraph/
+projects/*
+
+!projects/vfxgraph.vcxproj
+!projects/vfxgraph.vcxproj.filters

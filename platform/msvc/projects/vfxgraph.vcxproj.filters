@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="dataset">
+      <UniqueIdentifier>{f3a6d2d6-157e-48ab-91e2-c0e20fb5143c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="dataset\var">
+      <UniqueIdentifier>{31b8e2dc-e683-4fdc-a1db-d9ba8a6e3406}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="dataset\node">
+      <UniqueIdentifier>{829c3cfe-3339-4972-96ad-cd64f113b8a6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="nodes">
+      <UniqueIdentifier>{d07a6e21-c581-4a62-8fe9-bc4906515c83}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="nodes\common">
+      <UniqueIdentifier>{23ea796a-690c-4cd1-b811-80a54f620d65}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="nodes\fluid2d">
+      <UniqueIdentifier>{3ec7e80d-e739-4dc5-afac-ebb5ba544392}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="nodes\common\value">
+      <UniqueIdentifier>{ea771acc-1873-476b-b5f9-502f73ae5701}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="tools">
+      <UniqueIdentifier>{311be1d4-91fb-493c-9104-83506675a099}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="tools\rtti">
+      <UniqueIdentifier>{c7a16dd9-e49e-4e3b-9685-c4db6c2c0981}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\source\Node.cpp">
+      <Filter>dataset\node</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\node\Texture.cpp">
+      <Filter>nodes\common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\node\value_nodes.cpp">
+      <Filter>nodes\common\value</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\include\vfxgraph\RegistRTTR.cpp">
+      <Filter>tools\rtti</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\VfxGraph.cpp" />
+    <ClCompile Include="..\..\..\source\DrawList.cpp">
+      <Filter>dataset</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\include\vfxgraph\Node.h">
+      <Filter>dataset\node</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\vfxgraph\VarType.h">
+      <Filter>dataset\var</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\vfxgraph\Value.h">
+      <Filter>dataset\var</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\vfxgraph\Variant.h">
+      <Filter>dataset\var</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\vfxgraph\ValueImpl.h">
+      <Filter>dataset\var</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\vfxgraph\node\Texture.h">
+      <Filter>nodes\common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\vfxgraph\node\Texture.parm.h">
+      <Filter>nodes\common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\vfxgraph\RenderContext.h">
+      <Filter>dataset</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\vfxgraph\node\value_nodes.h">
+      <Filter>nodes\common\value</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\vfxgraph\node\Float.parm.h">
+      <Filter>nodes\common\value</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\vfxgraph\node\Float2.parm.h">
+      <Filter>nodes\common\value</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\vfxgraph\node\Float3.parm.h">
+      <Filter>nodes\common\value</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\vfxgraph\node\Float4.parm.h">
+      <Filter>nodes\common\value</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\vfxgraph\node_include_gen.h">
+      <Filter>tools\rtti</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\vfxgraph\node_regist_cfg.h">
+      <Filter>tools\rtti</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\vfxgraph\node_rttr_gen.h">
+      <Filter>tools\rtti</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\vfxgraph\typedef.h" />
+    <ClInclude Include="..\..\..\include\vfxgraph\VfxGraph.h" />
+    <ClInclude Include="..\..\..\include\vfxgraph\DrawList.h">
+      <Filter>dataset</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

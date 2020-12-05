@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\include\vfxgraph\DrawList.h" />
+    <ClInclude Include="..\..\..\include\vfxgraph\Node.h" />
+    <ClInclude Include="..\..\..\include\vfxgraph\node\Float.parm.h" />
+    <ClInclude Include="..\..\..\include\vfxgraph\node\Float2.parm.h" />
+    <ClInclude Include="..\..\..\include\vfxgraph\node\Float3.parm.h" />
+    <ClInclude Include="..\..\..\include\vfxgraph\node\Float4.parm.h" />
+    <ClInclude Include="..\..\..\include\vfxgraph\node\Texture.h" />
+    <ClInclude Include="..\..\..\include\vfxgraph\node\Texture.parm.h" />
+    <ClInclude Include="..\..\..\include\vfxgraph\node\value_nodes.h" />
+    <ClInclude Include="..\..\..\include\vfxgraph\node_include_gen.h" />
+    <ClInclude Include="..\..\..\include\vfxgraph\node_regist_cfg.h" />
+    <ClInclude Include="..\..\..\include\vfxgraph\node_rttr_gen.h" />
+    <ClInclude Include="..\..\..\include\vfxgraph\RenderContext.h" />
+    <ClInclude Include="..\..\..\include\vfxgraph\typedef.h" />
+    <ClInclude Include="..\..\..\include\vfxgraph\Value.h" />
+    <ClInclude Include="..\..\..\include\vfxgraph\ValueImpl.h" />
+    <ClInclude Include="..\..\..\include\vfxgraph\Variant.h" />
+    <ClInclude Include="..\..\..\include\vfxgraph\VarType.h" />
+    <ClInclude Include="..\..\..\include\vfxgraph\VfxGraph.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\include\vfxgraph\RegistRTTR.cpp" />
+    <ClCompile Include="..\..\..\source\DrawList.cpp" />
+    <ClCompile Include="..\..\..\source\Node.cpp" />
+    <ClCompile Include="..\..\..\source\node\Texture.cpp" />
+    <ClCompile Include="..\..\..\source\node\value_nodes.cpp" />
+    <ClCompile Include="..\..\..\source\VfxGraph.cpp" />
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectName>vfxgraph</ProjectName>
+    <ProjectGuid>{3D03F8A7-DDB8-4CAC-9BC6-45732753CBFA}</ProjectGuid>
+    <RootNamespace>vfxgraph</RootNamespace>
+    <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>15.0.26730.12</_ProjectFileVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>..\vfxgraph\x86\Debug\</OutDir>
+    <IntDir>..\vfxgraph\x86\Debug\obj\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>..\vfxgraph\x86\Release\</OutDir>
+    <IntDir>..\vfxgraph\x86\Release\obj\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>..\..\..;..\..\..\include;..\..\..\include\vfxgraph;..\..\..\..\ds\src\ds;..\..\..\..\unirender\include;..\..\..\..\memmgr\include;..\..\..\..\cooking\include;..\..\..\..\cu\src;..\..\..\..\sm\src\sm;..\..\..\..\guard\include;..\..\..\..\dag\include;..\..\..\..\cpputil\include;..\..\..\..\tessellation\include;..\..\..\..\cslang\include;..\..\..\..\model\include;..\..\..\..\painting0\include;..\..\..\..\painting2\include;..\..\..\..\painting3\include;..\..\..\..\renderpipeline\include;..\..\..\..\shaderweaver\include;..\..\..\..\lexer\include;..\..\..\..\shadertrans\include;..\..\..\..\shadergraph\include;..\..\..\..\external\c99;..\..\..\..\external\boost\include;..\..\..\..\external\rttr\include;..\..\..\..\external\chaiscript\include;..\..\..\..\external\spirv-cross\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;_CRT_SECURE_NO_WARNINGS;EASY_EDITOR;__STDC_LIMIT_MACROS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <PrecompiledHeader />
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <AdditionalIncludeDirectories>..\..\..;..\..\..\include;..\..\..\include\vfxgraph;..\..\..\..\ds\src\ds;..\..\..\..\unirender\include;..\..\..\..\memmgr\include;..\..\..\..\cooking\include;..\..\..\..\cu\src;..\..\..\..\sm\src\sm;..\..\..\..\guard\include;..\..\..\..\dag\include;..\..\..\..\cpputil\include;..\..\..\..\tessellation\include;..\..\..\..\cslang\include;..\..\..\..\model\include;..\..\..\..\painting0\include;..\..\..\..\painting2\include;..\..\..\..\painting3\include;..\..\..\..\renderpipeline\include;..\..\..\..\shaderweaver\include;..\..\..\..\lexer\include;..\..\..\..\shadertrans\include;..\..\..\..\shadergraph\include;..\..\..\..\external\c99;..\..\..\..\external\boost\include;..\..\..\..\external\rttr\include;..\..\..\..\external\chaiscript\include;..\..\..\..\external\spirv-cross\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;_CRT_SECURE_NO_WARNINGS;EASY_EDITOR;__STDC_LIMIT_MACROS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <PrecompiledHeader />
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
