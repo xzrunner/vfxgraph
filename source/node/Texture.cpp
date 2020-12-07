@@ -46,9 +46,6 @@ void Texture::Init(const RenderContext& rc) const
 
     switch (m_format)
     {
-    case Format::RGBA16:
-        desc.format = ur::TextureFormat::RGBA16F;
-        break;
     case Format::RGBA8:
         desc.format = ur::TextureFormat::RGBA8;
         break;
@@ -60,6 +57,12 @@ void Texture::Init(const RenderContext& rc) const
         break;
     case Format::RGB565:
         desc.format = ur::TextureFormat::RGB565;
+        break;
+    case Format::RGBA16F:
+        desc.format = ur::TextureFormat::RGBA16F;
+        break;
+    case Format::RGBA32F:
+        desc.format = ur::TextureFormat::RGBA32F;
         break;
 	case Format::RGB16F:
 		desc.format = ur::TextureFormat::RGB16F;
