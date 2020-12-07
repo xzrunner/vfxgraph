@@ -27,3 +27,10 @@
 #define PARM_NODE_TYPE Texture
 #define PARM_NODE_NAME texture
 #include EXE_FILEPATH
+
+// fluid2d
+
+#define NO_PARM_FILEPATH
+#define PARM_NODE_TYPE Copy
+#define PARM_NODE_NAME copy
+#include EXE_FILEPATH

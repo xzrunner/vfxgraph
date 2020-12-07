@@ -13,6 +13,7 @@
   <ItemGroup>
     <ClInclude Include="..\..\..\include\vfxgraph\DrawList.h" />
     <ClInclude Include="..\..\..\include\vfxgraph\Node.h" />
+    <ClInclude Include="..\..\..\include\vfxgraph\node\Copy.h" />
     <ClInclude Include="..\..\..\include\vfxgraph\node\Float.parm.h" />
     <ClInclude Include="..\..\..\include\vfxgraph\node\Float2.parm.h" />
     <ClInclude Include="..\..\..\include\vfxgraph\node\Float3.parm.h" />
@@ -35,6 +36,7 @@
     <ClCompile Include="..\..\..\include\vfxgraph\RegistRTTR.cpp" />
     <ClCompile Include="..\..\..\source\DrawList.cpp" />
     <ClCompile Include="..\..\..\source\Node.cpp" />
+    <ClCompile Include="..\..\..\source\node\Copy.cpp" />
     <ClCompile Include="..\..\..\source\node\Texture.cpp" />
     <ClCompile Include="..\..\..\source\node\value_nodes.cpp" />
     <ClCompile Include="..\..\..\source\VfxGraph.cpp" />
