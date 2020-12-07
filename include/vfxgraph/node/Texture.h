@@ -42,7 +42,7 @@ public:
 
     virtual void Execute(const std::shared_ptr<dag::Context>& ctx = nullptr) override;
 
-    void Init(const RenderContext& rc) const;
+    void CreateTex(const RenderContext& rc);
 
     void Draw(const RenderContext& rc) const;
 

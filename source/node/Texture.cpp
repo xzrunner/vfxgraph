@@ -17,14 +17,18 @@ namespace node
 
 void Texture::Execute(const std::shared_ptr<dag::Context>& ctx)
 {
-    if (!m_tex && m_width > 0 && m_height > 0) {
-        Init(*std::static_pointer_cast<RenderContext>(ctx));
+    if (!IsDirty()) {
+        return;
+    }
+
+    if (m_filepath.empty()) {
+        CreateTex(*std::static_pointer_cast<RenderContext>(ctx));
     }
 
     m_exports[O_TEX].var.type.val = std::make_shared<TextureVal>(m_tex, m_sampler);
 }
 
-void Texture::Init(const RenderContext& rc) const
+void Texture::CreateTex(const RenderContext& rc)
 {
     ur::TextureTarget target;
     switch (m_type)
@@ -123,21 +127,14 @@ void Texture::Init(const RenderContext& rc) const
         assert(0);
     }
 
-    if (!m_filepath.empty())
+    switch (m_type)
     {
-        ;
-    }
-    else
-    {
-        switch (m_type)
-        {
-        case Type::Tex2D:
-            desc.target = ur::TextureTarget::Texture2D;
-            break;
-        case Type::TexCube:
-            desc.target = ur::TextureTarget::TextureCubeMap;
-            break;
-        }
+    case Type::Tex2D:
+        desc.target = ur::TextureTarget::Texture2D;
+        break;
+    case Type::TexCube:
+        desc.target = ur::TextureTarget::TextureCubeMap;
+        break;
     }
 
     m_tex = rc.ur_dev->CreateTexture(desc);
