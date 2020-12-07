@@ -1,12 +1,9 @@
 #include "vfxgraph/node/Copy.h"
+#include "vfxgraph/NodeHelper.h"
 #include "vfxgraph/RenderContext.h"
-#include "vfxgraph/ValueImpl.h"
 
-#include <unirender/Device.h>
 #include <unirender/Context.h>
 #include <unirender/ShaderProgram.h>
-#include <unirender/Texture.h>
-#include <shadertrans/ShaderTrans.h>
 
 namespace
 {
@@ -42,43 +39,13 @@ void Copy::Execute(const std::shared_ptr<dag::Context>& ctx)
 		return;
 	}
 
-	if (!m_shader)
-	{
-		std::vector<unsigned int> _cs;
-		shadertrans::ShaderTrans::GLSL2SpirV(shadertrans::ShaderStage::ComputeShader, cs, _cs);
-
-		auto rc = std::static_pointer_cast<RenderContext>(ctx);
-		m_shader = rc->ur_dev->CreateShaderProgram(_cs);
-	}
-
+	m_shader = NodeHelper::CreateShader(ctx, cs);
 	if (!m_shader) {
 		return;
 	}
 
-	if (m_imports[0].conns.empty() ||
-		m_imports[1].conns.empty()) {
-		return;
-	}
-
-	assert(m_imports[0].conns.size() == 1 
-		&& m_imports[1].conns.size() == 1);
-	auto& read_conn = m_imports[0].conns[0];
-	auto& write_conn = m_imports[1].conns[0];
-	auto read_node = read_conn.node.lock();
-	auto write_node = write_conn.node.lock();
-	if (!read_node || !write_node) {
-		return;
-	}
-
-	auto& read_val = read_node->GetExports()[read_conn.idx].var.type;
-	auto& write_val = write_node->GetExports()[write_conn.idx].var.type;
-	if (read_val.type != VarType::Texture ||
-		write_val.type != VarType::Texture) {
-		return;
-	}
-
-	auto read_tex = std::static_pointer_cast<TextureVal>(read_val.val)->texture;
-	auto write_tex = std::static_pointer_cast<TextureVal>(write_val.val)->texture;
+	auto read_tex = NodeHelper::GetInputTex(*this, ID_READ);
+	auto write_tex = NodeHelper::GetInputTex(*this, ID_WRITE);
 	if (!read_tex || !write_tex) {
 		return;
 	}

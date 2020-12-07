@@ -22,7 +22,7 @@ public:
 
     virtual void Execute(const std::shared_ptr<dag::Context>& ctx = nullptr) override
     {
-        m_exports[0].var.type.val = std::make_shared<FloatVal>();
+        m_exports[0].var.type.val = std::make_shared<FloatVal>(m_val);
     }
 
     RTTR_ENABLE(Node)
@@ -43,6 +43,11 @@ public:
         };
     }
 
+    virtual void Execute(const std::shared_ptr<dag::Context>& ctx = nullptr) override
+    {
+        m_exports[0].var.type.val = std::make_shared<Float2Val>(m_val.x, m_val.y);
+    }
+
     RTTR_ENABLE(Node)
 
 #define PARM_FILEPATH "vfxgraph/node/Float2.parm.h"
@@ -61,6 +66,11 @@ public:
         };
     }
 
+    virtual void Execute(const std::shared_ptr<dag::Context>& ctx = nullptr) override
+    {
+        m_exports[0].var.type.val = std::make_shared<Float3Val>(m_val.x, m_val.y, m_val.z);
+    }
+
     RTTR_ENABLE(Node)
 
 #define PARM_FILEPATH "vfxgraph/node/Float3.parm.h"
@@ -77,6 +87,11 @@ public:
         m_exports = {
             {{ VarType::Float4, "out" }}
         };
+    }
+
+    virtual void Execute(const std::shared_ptr<dag::Context>& ctx = nullptr) override
+    {
+        m_exports[0].var.type.val = std::make_shared<Float4Val>(m_val.x, m_val.y, m_val.z, m_val.w);
     }
 
     RTTR_ENABLE(Node)

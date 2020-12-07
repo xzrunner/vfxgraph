@@ -2,4 +2,4 @@
 #error "You must define PARAM_INFO macro before include this file"
 #endif
 
-PARAM_INFO(Value, float, val, m_val, (0))
+PARAM_INFO(Value, float, val, m_val, (0.0f))

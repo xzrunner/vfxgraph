@@ -49,6 +49,12 @@
     <ClCompile Include="..\..\..\source\node\Copy.cpp">
       <Filter>nodes\fluid2d</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\source\node\RKAdvect.cpp">
+      <Filter>nodes\fluid2d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\NodeHelper.cpp">
+      <Filter>dataset\node</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\include\vfxgraph\Node.h">
@@ -78,12 +84,6 @@
     <ClInclude Include="..\..\..\include\vfxgraph\node\value_nodes.h">
       <Filter>nodes\common\value</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\include\vfxgraph\node\Float.parm.h">
-      <Filter>nodes\common\value</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\include\vfxgraph\node\Float2.parm.h">
-      <Filter>nodes\common\value</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\include\vfxgraph\node\Float3.parm.h">
       <Filter>nodes\common\value</Filter>
     </ClInclude>
@@ -106,6 +106,18 @@
     </ClInclude>
     <ClInclude Include="..\..\..\include\vfxgraph\node\Copy.h">
       <Filter>nodes\fluid2d</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\vfxgraph\node\RKAdvect.h">
+      <Filter>nodes\fluid2d</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\vfxgraph\NodeHelper.h">
+      <Filter>dataset\node</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\vfxgraph\node\Float2.parm.h">
+      <Filter>nodes\common\value</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\vfxgraph\node\Float.parm.h">
+      <Filter>nodes\common\value</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -13,11 +13,13 @@
   <ItemGroup>
     <ClInclude Include="..\..\..\include\vfxgraph\DrawList.h" />
     <ClInclude Include="..\..\..\include\vfxgraph\Node.h" />
+    <ClInclude Include="..\..\..\include\vfxgraph\NodeHelper.h" />
     <ClInclude Include="..\..\..\include\vfxgraph\node\Copy.h" />
-    <ClInclude Include="..\..\..\include\vfxgraph\node\Float.parm.h" />
     <ClInclude Include="..\..\..\include\vfxgraph\node\Float2.parm.h" />
+    <ClInclude Include="..\..\..\include\vfxgraph\node\Float.parm.h" />
     <ClInclude Include="..\..\..\include\vfxgraph\node\Float3.parm.h" />
     <ClInclude Include="..\..\..\include\vfxgraph\node\Float4.parm.h" />
+    <ClInclude Include="..\..\..\include\vfxgraph\node\RKAdvect.h" />
     <ClInclude Include="..\..\..\include\vfxgraph\node\Texture.h" />
     <ClInclude Include="..\..\..\include\vfxgraph\node\Texture.parm.h" />
     <ClInclude Include="..\..\..\include\vfxgraph\node\value_nodes.h" />
@@ -36,7 +38,9 @@
     <ClCompile Include="..\..\..\include\vfxgraph\RegistRTTR.cpp" />
     <ClCompile Include="..\..\..\source\DrawList.cpp" />
     <ClCompile Include="..\..\..\source\Node.cpp" />
+    <ClCompile Include="..\..\..\source\NodeHelper.cpp" />
     <ClCompile Include="..\..\..\source\node\Copy.cpp" />
+    <ClCompile Include="..\..\..\source\node\RKAdvect.cpp" />
     <ClCompile Include="..\..\..\source\node\Texture.cpp" />
     <ClCompile Include="..\..\..\source\node\value_nodes.cpp" />
     <ClCompile Include="..\..\..\source\VfxGraph.cpp" />

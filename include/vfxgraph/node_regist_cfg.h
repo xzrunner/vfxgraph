@@ -2,6 +2,8 @@
 #error "You must define EXE_FILEPATH macro before include this file"
 #endif
 
+#undef NO_PARM_FILEPATH
+
 // common
 
 #define NO_FILEPATH_INCLUDE
@@ -33,4 +35,9 @@
 #define NO_PARM_FILEPATH
 #define PARM_NODE_TYPE Copy
 #define PARM_NODE_NAME copy
+#include EXE_FILEPATH
+
+#define NO_PARM_FILEPATH
+#define PARM_NODE_TYPE RKAdvect
+#define PARM_NODE_NAME rk_advect
 #include EXE_FILEPATH
