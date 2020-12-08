@@ -23,6 +23,8 @@ public:
 
     static ur::TexturePtr GetInputTex(const Node& node, size_t idx);
     static float GetInputFloat(const Node& node, size_t idx);
+    static const float* GetInputFloat2(const Node& node, size_t idx);
+    static const float* GetInputFloat3(const Node& node, size_t idx);
 
 }; // NodeHelper
 

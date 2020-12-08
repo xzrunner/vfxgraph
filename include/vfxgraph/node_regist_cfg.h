@@ -38,6 +38,21 @@
 #include EXE_FILEPATH
 
 #define NO_PARM_FILEPATH
+#define PARM_NODE_TYPE AddSplat
+#define PARM_NODE_NAME add_splat
+#include EXE_FILEPATH
+
+#define NO_PARM_FILEPATH
 #define PARM_NODE_TYPE RKAdvect
 #define PARM_NODE_NAME rk_advect
+#include EXE_FILEPATH
+
+#define NO_PARM_FILEPATH
+#define PARM_NODE_TYPE MCAdvect
+#define PARM_NODE_NAME mc_advect
+#include EXE_FILEPATH
+
+#define NO_PARM_FILEPATH
+#define PARM_NODE_TYPE RBMethod
+#define PARM_NODE_NAME rb_method
 #include EXE_FILEPATH

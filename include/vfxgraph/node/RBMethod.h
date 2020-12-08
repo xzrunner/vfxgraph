@@ -11,17 +11,15 @@ namespace vfxgraph
 namespace node
 {
 
-class RKAdvect : public Node
+class RBMethod : public Node
 {
 public:
-    RKAdvect()
+    RBMethod()
     {
         m_imports = {
             {{ VarType::Port,    "prev" }},
-            {{ VarType::Texture, "velocities" }},
             {{ VarType::Texture, "read" }},
             {{ VarType::Texture, "write" }},
-            {{ VarType::Float,   "dt" }},
         };
         m_exports = {
             {{ VarType::Port,    "next" }},
@@ -30,23 +28,26 @@ public:
 
     enum InputID
     {
-        ID_VELOCITIES = 1,
-        ID_READ,
+        ID_READ = 1,
         ID_WRITE,
-        ID_DT
     };
 
     virtual void Execute(const std::shared_ptr<dag::Context>& ctx = nullptr) override;
 
-    static void Execute(const std::shared_ptr<dag::Context>& ctx, const ur::TexturePtr& v, 
-        const ur::TexturePtr& read, const ur::TexturePtr& write, float dt);
-
 private:
-    static std::shared_ptr<ur::ShaderProgram> m_shader;
+    int m_jacobi_iterations = 50;
+
+    std::shared_ptr<ur::ShaderProgram> m_div_rb_shader           = nullptr;
+    std::shared_ptr<ur::ShaderProgram> m_jacobi_black_shader     = nullptr;
+    std::shared_ptr<ur::ShaderProgram> m_jacobi_red_shader       = nullptr;
+    std::shared_ptr<ur::ShaderProgram> m_pressure_proj_rb_shader = nullptr;
+
+    ur::TexturePtr m_divergence_tex = nullptr;
+    ur::TexturePtr m_pressure_tex = nullptr;
 
     RTTR_ENABLE(Node)
 
-}; // RKAdvect
+}; // RBMethod
 
 }
 }

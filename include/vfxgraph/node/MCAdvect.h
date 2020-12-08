@@ -11,14 +11,13 @@ namespace vfxgraph
 namespace node
 {
 
-class RKAdvect : public Node
+class MCAdvect : public Node
 {
 public:
-    RKAdvect()
+    MCAdvect()
     {
         m_imports = {
             {{ VarType::Port,    "prev" }},
-            {{ VarType::Texture, "velocities" }},
             {{ VarType::Texture, "read" }},
             {{ VarType::Texture, "write" }},
             {{ VarType::Float,   "dt" }},
@@ -30,23 +29,21 @@ public:
 
     enum InputID
     {
-        ID_VELOCITIES = 1,
-        ID_READ,
+        ID_READ = 1,
         ID_WRITE,
         ID_DT
     };
 
     virtual void Execute(const std::shared_ptr<dag::Context>& ctx = nullptr) override;
 
-    static void Execute(const std::shared_ptr<dag::Context>& ctx, const ur::TexturePtr& v, 
-        const ur::TexturePtr& read, const ur::TexturePtr& write, float dt);
-
 private:
-    static std::shared_ptr<ur::ShaderProgram> m_shader;
+    std::shared_ptr<ur::ShaderProgram> m_shader = nullptr;
+
+    std::array<ur::TexturePtr, 3> m_temp_texs;
 
     RTTR_ENABLE(Node)
 
-}; // RKAdvect
+}; // MCAdvect
 
 }
 }

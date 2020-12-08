@@ -7,6 +7,8 @@ enum class VarType
 {
 	Unknown,
 
+	Port,
+
 	Float,
 	Float2,
 	Float3,

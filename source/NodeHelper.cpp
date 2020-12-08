@@ -61,4 +61,24 @@ float NodeHelper::GetInputFloat(const Node& node, size_t idx)
     return std::static_pointer_cast<FloatVal>(in_val->val)->x;
 }
 
+const float* NodeHelper::GetInputFloat2(const Node& node, size_t idx)
+{
+    auto in_val = GetInputVar(node, idx);
+    if (!in_val || !in_val->val || in_val->type != VarType::Float2) {
+        return nullptr;
+    }
+
+    return std::static_pointer_cast<Float2Val>(in_val->val)->xy;
+}
+
+const float* NodeHelper::GetInputFloat3(const Node& node, size_t idx)
+{
+    auto in_val = GetInputVar(node, idx);
+    if (!in_val || !in_val->val || in_val->type != VarType::Float3) {
+        return nullptr;
+    }
+
+    return std::static_pointer_cast<Float3Val>(in_val->val)->xyz;
+}
+
 }

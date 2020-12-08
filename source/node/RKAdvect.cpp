@@ -79,30 +79,40 @@ namespace vfxgraph
 namespace node
 {
 
+std::shared_ptr<ur::ShaderProgram> RKAdvect::m_shader = nullptr;
+
 void RKAdvect::Execute(const std::shared_ptr<dag::Context>& ctx)
 {
-	m_shader = NodeHelper::CreateShader(ctx, cs);
-	if (!m_shader) {
-		return;
-	}
-
 	auto velocities_tex = NodeHelper::GetInputTex(*this, ID_VELOCITIES);
 	auto read_tex = NodeHelper::GetInputTex(*this, ID_READ);
 	auto write_tex = NodeHelper::GetInputTex(*this, ID_WRITE);
-	if (!read_tex || !write_tex) {
+	if (!velocities_tex || !read_tex || !write_tex) {
+		return;
+	}
+
+	float dt = NodeHelper::GetInputFloat(*this, ID_DT);
+	Execute(ctx, velocities_tex, read_tex, write_tex, dt);
+}
+
+void RKAdvect::Execute(const std::shared_ptr<dag::Context>& ctx, const ur::TexturePtr& v, 
+	                   const ur::TexturePtr& read, const ur::TexturePtr& write, float dt)
+{
+	if (!m_shader) {
+		m_shader = NodeHelper::CreateShader(ctx, cs);
+	}
+	if (!m_shader) {
 		return;
 	}
 
 	auto u_dt = m_shader->QueryUniform("dt");
 	assert(u_dt);
-	float dt = NodeHelper::GetInputFloat(*this, ID_DT);
 	u_dt->SetValue(&dt, 1);
 
 	auto rc = std::static_pointer_cast<RenderContext>(ctx);
 
-	rc->ur_ctx->SetTexture(m_shader->QueryTexSlot("velocities_READ"), velocities_tex);
-	rc->ur_ctx->SetTexture(m_shader->QueryTexSlot("field_READ"), read_tex);
-	rc->ur_ctx->SetImage(m_shader->QueryImgSlot("field_WRITE"), write_tex, ur::AccessType::WriteOnly);
+	rc->ur_ctx->SetTexture(m_shader->QueryTexSlot("velocities_READ"), v);
+	rc->ur_ctx->SetTexture(m_shader->QueryTexSlot("field_READ"), read);
+	rc->ur_ctx->SetImage(m_shader->QueryImgSlot("field_WRITE"), write, ur::AccessType::WriteOnly);
 
 	rc->ur_ds.program = m_shader;
 	int x, y, z;

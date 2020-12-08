@@ -55,6 +55,15 @@
     <ClCompile Include="..\..\..\source\NodeHelper.cpp">
       <Filter>dataset\node</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\source\node\MCAdvect.cpp">
+      <Filter>nodes\fluid2d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\node\RBMethod.cpp">
+      <Filter>nodes\fluid2d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\node\AddSplat.cpp">
+      <Filter>nodes\fluid2d</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\include\vfxgraph\Node.h">
@@ -118,6 +127,15 @@
     </ClInclude>
     <ClInclude Include="..\..\..\include\vfxgraph\node\Float.parm.h">
       <Filter>nodes\common\value</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\vfxgraph\node\MCAdvect.h">
+      <Filter>nodes\fluid2d</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\vfxgraph\node\RBMethod.h">
+      <Filter>nodes\fluid2d</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\vfxgraph\node\AddSplat.h">
+      <Filter>nodes\fluid2d</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

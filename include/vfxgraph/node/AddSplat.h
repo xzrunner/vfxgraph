@@ -9,26 +9,29 @@ namespace vfxgraph
 namespace node
 {
 
-class Copy : public Node
+class AddSplat : public Node
 {
 public:
-    Copy()
+    AddSplat()
     {
         m_imports = {
             {{ VarType::Port,    "prev" }},
-            {{ VarType::Texture, "read" }},
-            {{ VarType::Texture, "write" }},
+            {{ VarType::Texture, "tex" }},
+            {{ VarType::Float2,  "pos" }},
+            {{ VarType::Float3,  "color" }},
+            {{ VarType::Float,   "intensity" }},
         };
         m_exports = {
             {{ VarType::Port,    "next" }},
-            {{ VarType::Texture, "out" }},
         };
     }
 
     enum InputID
     {
-        ID_READ = 1,
-        ID_WRITE
+        ID_TEX = 1,
+        ID_POS,
+        ID_COLOR,
+        ID_INTENSITY,
     };
 
     virtual void Execute(const std::shared_ptr<dag::Context>& ctx = nullptr) override;
@@ -38,7 +41,7 @@ private:
 
     RTTR_ENABLE(Node)
 
-}; // Copy
+}; // AddSplat
 
 }
 }
