@@ -243,10 +243,10 @@ void main()
 	const vec2 bVel = texelFetchOffset(velocities_READ, pCoords, 0, ivec2(1, 1)).xy;
 	const vec2 aVel = texelFetchOffset(velocities_READ, pCoords, 0, ivec2(0, 1)).xy;
 
-	imageStore(velocities_WRITE, pCoords              , vec4(rVel - rGrad, 0.0, 0.0));
-	imageStore(velocities_WRITE, pCoords + ivec2(1, 0), vec4(gVel - gGrad, 0.0, 0.0));
-	imageStore(velocities_WRITE, pCoords + ivec2(1, 1), vec4(bVel - bGrad, 0.0, 0.0));
-	imageStore(velocities_WRITE, pCoords + ivec2(0, 1), vec4(aVel - aGrad, 0.0, 0.0));
+	imageStore(velocities_WRITE, pCoords              , vec4(rVel - rGrad, 0.0, 1.0));
+	imageStore(velocities_WRITE, pCoords + ivec2(1, 0), vec4(gVel - gGrad, 0.0, 1.0));
+	imageStore(velocities_WRITE, pCoords + ivec2(1, 1), vec4(bVel - bGrad, 0.0, 1.0));
+	imageStore(velocities_WRITE, pCoords + ivec2(0, 1), vec4(aVel - aGrad, 0.0, 1.0));
 }
 
 )";
