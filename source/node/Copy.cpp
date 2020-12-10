@@ -14,7 +14,7 @@ const char* cs = R"(
 
 layout(local_size_x = 32, local_size_y = 32) in;
 
-layout(rgba8, binding = 0) uniform image2D tex_READ;
+layout(rgba32f, binding = 0) uniform image2D tex_READ;
 layout(rgba32f, binding = 1) uniform image2D tex_WRITE;
 
 void main()

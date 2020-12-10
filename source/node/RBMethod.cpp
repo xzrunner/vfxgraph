@@ -281,8 +281,8 @@ void RBMethod::Execute(const std::shared_ptr<dag::Context>& ctx)
 	{
 		ur::TextureDescription desc;
 		desc.target = ur::TextureTarget::Texture2D;
-		desc.width = desc.height = 512;
-		desc.format = ur::TextureFormat::RGBA16F;
+		desc.width = desc.height = 256;
+		desc.format = ur::TextureFormat::RGBA32F;
 
 		m_divergence_tex = rc->ur_dev->CreateTexture(desc);
 		m_pressure_tex = rc->ur_dev->CreateTexture(desc);

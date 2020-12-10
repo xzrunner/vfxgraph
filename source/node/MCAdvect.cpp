@@ -124,7 +124,7 @@ void MCAdvect::Execute(const std::shared_ptr<dag::Context>& ctx)
 		ur::TextureDescription desc;
 		desc.target = ur::TextureTarget::Texture2D;
 		desc.width = desc.height = 1024;
-		desc.format = ur::TextureFormat::RGBA16F;
+		desc.format = ur::TextureFormat::RGBA32F;
 
 		for (auto& tex : m_temp_texs) {
 			tex = rc->ur_dev->CreateTexture(desc);
