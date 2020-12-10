@@ -18,6 +18,7 @@ public:
     {
         m_imports = {
             {{ VarType::Port,    "prev" }},
+            {{ VarType::Texture, "velocities" }},
             {{ VarType::Texture, "read" }},
             {{ VarType::Texture, "write" }},
             {{ VarType::Float,   "dt" }},
@@ -29,7 +30,8 @@ public:
 
     enum InputID
     {
-        ID_READ = 1,
+        ID_VELOCITIES = 1,
+        ID_READ,
         ID_WRITE,
         ID_DT
     };
@@ -39,7 +41,7 @@ public:
 private:
     std::shared_ptr<ur::ShaderProgram> m_shader = nullptr;
 
-    std::array<ur::TexturePtr, 3> m_temp_texs;
+    std::array<ur::TexturePtr, 2> m_temp_texs;
 
     RTTR_ENABLE(Node)
 

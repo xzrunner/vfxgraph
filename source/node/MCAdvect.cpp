@@ -131,25 +131,26 @@ void MCAdvect::Execute(const std::shared_ptr<dag::Context>& ctx)
 		}
 	}
 
+	auto velocities_tex = NodeHelper::GetInputTex(*this, ID_VELOCITIES);
 	auto read_tex = NodeHelper::GetInputTex(*this, ID_READ);
 	auto write_tex = NodeHelper::GetInputTex(*this, ID_WRITE);
-	if (!read_tex || !write_tex) {
+	if (!velocities_tex || !read_tex || !write_tex) {
 		return;
 	}
 
 	float dt = NodeHelper::GetInputFloat(*this, ID_DT);
 
-	RKAdvect::Execute(ctx, read_tex, m_temp_texs[0], m_temp_texs[1], dt);
-	RKAdvect::Execute(ctx, read_tex, m_temp_texs[1], m_temp_texs[2], -dt);
+	RKAdvect::Execute(ctx, velocities_tex, read_tex, m_temp_texs[0], dt);
+	RKAdvect::Execute(ctx, velocities_tex, m_temp_texs[0], m_temp_texs[1], -dt);
 
 	auto u_dt = m_shader->QueryUniform("dt");
 	assert(u_dt);
 	u_dt->SetValue(&dt, 1);
 
-	rc->ur_ctx->SetTexture(m_shader->QueryTexSlot("field_n"), m_temp_texs[0]);
+	rc->ur_ctx->SetTexture(m_shader->QueryTexSlot("field_n"), read_tex);
 	rc->ur_ctx->SetTexture(m_shader->QueryTexSlot("field_n_hat_READ"), m_temp_texs[1]);
-	rc->ur_ctx->SetTexture(m_shader->QueryTexSlot("field_n_1_READ"), m_temp_texs[2]);
-	rc->ur_ctx->SetTexture(m_shader->QueryTexSlot("velocities_READ"), read_tex);
+	rc->ur_ctx->SetTexture(m_shader->QueryTexSlot("field_n_1_READ"), m_temp_texs[0]);
+	rc->ur_ctx->SetTexture(m_shader->QueryTexSlot("velocities_READ"), velocities_tex);
 
 	rc->ur_ctx->SetImage(m_shader->QueryImgSlot("field_WRITE"), write_tex, ur::AccessType::WriteOnly);
 
