@@ -18,8 +18,8 @@ const char* div_rb_cs = R"(
 
 layout(local_size_x = 32, local_size_y = 32) in;
 
-layout(rgba32f, binding = 0) uniform image2D divergence;
-layout(binding = 1) uniform sampler2D velocities_READ;
+layout(rgba32f) uniform image2D divergence;
+uniform sampler2D velocities_READ;
 
 // The grid point 11 corresponds to the pixel coords 2 * pixelCoords
 // We then fetch various neighboors to compute the divergence of points 11, 21, 12, 22
@@ -92,9 +92,9 @@ const char* jacobi_black_cs = R"(
 
 layout(local_size_x = 32, local_size_y = 32) in;
 
-layout(rgba32f, binding = 0) uniform image2D pressure_WRITE;
-layout(binding = 1) uniform sampler2D pressure_READ;
-layout(binding = 2) uniform sampler2D divergence;
+layout(rgba32f) uniform image2D pressure_WRITE;
+uniform sampler2D pressure_READ;
+uniform sampler2D divergence;
 
 vec2 pixelToTexel(in vec2 p, in vec2 tSize)
 {
@@ -149,9 +149,9 @@ const char* jacobi_red_cs = R"(
 
 layout(local_size_x = 32, local_size_y = 32) in;
 
-layout(rgba32f, binding = 0) uniform image2D pressure_WRITE;
-layout(binding = 1) uniform sampler2D pressure_READ;
-layout(binding = 2) uniform sampler2D divergence;
+layout(rgba32f) uniform image2D pressure_WRITE;
+uniform sampler2D pressure_READ;
+uniform sampler2D divergence;
 
 vec2 pixelToTexel(in vec2 p, in vec2 tSize)
 {
@@ -204,9 +204,9 @@ const char* pressure_proj_rb_cs = R"(
 
 layout(local_size_x = 32, local_size_y = 32) in;
 
-layout(rgba32f, binding = 0) uniform image2D velocities_WRITE;
-layout(binding = 1) uniform sampler2D velocities_READ;
-layout(binding = 2) uniform sampler2D pressure_READ;
+layout(rgba32f) uniform image2D velocities_WRITE;
+uniform sampler2D velocities_READ;
+uniform sampler2D pressure_READ;
 
 vec2 pixelToTexel(in vec2 p, in vec2 tSize)
 {
@@ -288,16 +288,15 @@ void RBMethod::Execute(const std::shared_ptr<dag::Context>& ctx)
 		m_pressure_tex = rc->ur_dev->CreateTexture(desc);
 	}
 
-	auto read_tex = NodeHelper::GetInputTex(*this, ID_READ);
-	auto write_tex = NodeHelper::GetInputTex(*this, ID_WRITE);
-	if (!read_tex || !write_tex) {
+	auto velocities_tex = NodeHelper::GetInputTex(*this, ID_VELOCITIES);
+	if (!velocities_tex) {
 		return;
 	}
 
 	// divergence
 
 	rc->ur_ctx->SetImage(m_div_rb_shader->QueryImgSlot("divergence"), m_divergence_tex, ur::AccessType::WriteOnly);
-	rc->ur_ctx->SetTexture(m_div_rb_shader->QueryTexSlot("velocities_READ"), read_tex);
+	rc->ur_ctx->SetTexture(m_div_rb_shader->QueryTexSlot("velocities_READ"), velocities_tex);
 
 	rc->ur_ds.program = m_div_rb_shader;
 	int x, y, z;
@@ -338,8 +337,8 @@ void RBMethod::Execute(const std::shared_ptr<dag::Context>& ctx)
 
 	// pressure projection
 
-	rc->ur_ctx->SetImage(m_pressure_proj_rb_shader->QueryImgSlot("velocities_WRITE"), write_tex, ur::AccessType::WriteOnly);
-	rc->ur_ctx->SetTexture(m_pressure_proj_rb_shader->QueryTexSlot("velocities_READ"), read_tex);
+	rc->ur_ctx->SetImage(m_pressure_proj_rb_shader->QueryImgSlot("velocities_WRITE"), velocities_tex, ur::AccessType::WriteOnly);
+	rc->ur_ctx->SetTexture(m_pressure_proj_rb_shader->QueryTexSlot("velocities_READ"), velocities_tex);
 	rc->ur_ctx->SetTexture(m_pressure_proj_rb_shader->QueryTexSlot("pressure_READ"), m_pressure_tex);
 
 	rc->ur_ds.program = m_pressure_proj_rb_shader;

@@ -19,8 +19,7 @@ public:
         m_imports = {
             {{ VarType::Port,    "prev" }},
             {{ VarType::Texture, "velocities" }},
-            {{ VarType::Texture, "read" }},
-            {{ VarType::Texture, "write" }},
+            {{ VarType::Texture, "field" }},
             {{ VarType::Float,   "dt" }},
         };
         m_exports = {
@@ -31,8 +30,7 @@ public:
     enum InputID
     {
         ID_VELOCITIES = 1,
-        ID_READ,
-        ID_WRITE,
+        ID_FIELD,
         ID_DT
     };
 

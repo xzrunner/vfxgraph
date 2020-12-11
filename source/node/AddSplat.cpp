@@ -23,8 +23,8 @@ uniform UBO
 	float intensity;
 };
 
-layout(rgba32f, binding = 0) uniform image2D field;
-layout(binding = 1) uniform sampler2D field_READ;
+layout(rgba32f) uniform image2D field;
+uniform sampler2D field_READ;
 
 vec2 pixelToTexel(in vec2 p, in vec2 tSize)
 {
@@ -97,8 +97,8 @@ void AddSplat::Execute(const std::shared_ptr<dag::Context>& ctx)
 
 	auto rc = std::static_pointer_cast<RenderContext>(ctx);
 
-	rc->ur_ctx->SetImage(m_shader->QueryImgSlot("field"), tex, ur::AccessType::ReadOnly);
-	rc->ur_ctx->SetTexture(m_shader->QueryImgSlot("field_READ"), tex);
+	rc->ur_ctx->SetImage(m_shader->QueryImgSlot("field"), tex, ur::AccessType::WriteOnly);
+	rc->ur_ctx->SetTexture(m_shader->QueryTexSlot("field_READ"), tex);
 
 	rc->ur_ds.program = m_shader;
 	int x, y, z;

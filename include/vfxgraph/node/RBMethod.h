@@ -18,8 +18,7 @@ public:
     {
         m_imports = {
             {{ VarType::Port,    "prev" }},
-            {{ VarType::Texture, "read" }},
-            {{ VarType::Texture, "write" }},
+            {{ VarType::Texture, "velocities" }},
         };
         m_exports = {
             {{ VarType::Port,    "next" }},
@@ -28,8 +27,7 @@ public:
 
     enum InputID
     {
-        ID_READ = 1,
-        ID_WRITE,
+        ID_VELOCITIES = 1,
     };
 
     virtual void Execute(const std::shared_ptr<dag::Context>& ctx = nullptr) override;

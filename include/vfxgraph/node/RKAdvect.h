@@ -19,8 +19,7 @@ public:
         m_imports = {
             {{ VarType::Port,    "prev" }},
             {{ VarType::Texture, "velocities" }},
-            {{ VarType::Texture, "read" }},
-            {{ VarType::Texture, "write" }},
+            {{ VarType::Texture, "field" }},
             {{ VarType::Float,   "dt" }},
         };
         m_exports = {
@@ -31,15 +30,14 @@ public:
     enum InputID
     {
         ID_VELOCITIES = 1,
-        ID_READ,
-        ID_WRITE,
+        ID_FIELD,
         ID_DT
     };
 
     virtual void Execute(const std::shared_ptr<dag::Context>& ctx = nullptr) override;
 
-    static void Execute(const std::shared_ptr<dag::Context>& ctx, const ur::TexturePtr& v, 
-        const ur::TexturePtr& read, const ur::TexturePtr& write, float dt);
+    static void Execute(const std::shared_ptr<dag::Context>& ctx, const ur::TexturePtr& velocities,
+        const ur::TexturePtr& field_read, const ur::TexturePtr& field_write, float dt);
 
 private:
     static std::shared_ptr<ur::ShaderProgram> m_shader;

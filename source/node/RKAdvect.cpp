@@ -64,7 +64,7 @@ void main()
 	vec2 pixelCoords = gl_GlobalInvocationID.xy;
 
 	vec2 v = RK(velocities_READ, pixelCoords, dt);
-	vec2 pos = pixelCoords - dt * vec2(1,1);
+	vec2 pos = pixelCoords - dt * v;
 	vec4 val = texture(field_READ, pixelToTexel(pos, tSize));
 
 	imageStore(field_WRITE, ivec2(pixelCoords), val);
@@ -84,18 +84,17 @@ std::shared_ptr<ur::ShaderProgram> RKAdvect::m_shader = nullptr;
 void RKAdvect::Execute(const std::shared_ptr<dag::Context>& ctx)
 {
 	auto velocities_tex = NodeHelper::GetInputTex(*this, ID_VELOCITIES);
-	auto read_tex = NodeHelper::GetInputTex(*this, ID_READ);
-	auto write_tex = NodeHelper::GetInputTex(*this, ID_WRITE);
-	if (!velocities_tex || !read_tex || !write_tex) {
+	auto field_tex = NodeHelper::GetInputTex(*this, ID_FIELD);
+	if (!velocities_tex || !field_tex) {
 		return;
 	}
 
 	float dt = NodeHelper::GetInputFloat(*this, ID_DT);
-	Execute(ctx, velocities_tex, read_tex, write_tex, dt);
+	Execute(ctx, velocities_tex, field_tex, field_tex, dt);
 }
 
-void RKAdvect::Execute(const std::shared_ptr<dag::Context>& ctx, const ur::TexturePtr& v, 
-	                   const ur::TexturePtr& read, const ur::TexturePtr& write, float dt)
+void RKAdvect::Execute(const std::shared_ptr<dag::Context>& ctx, const ur::TexturePtr& velocities,
+	                   const ur::TexturePtr& field_read, const ur::TexturePtr& field_write, float dt)
 {
 	if (!m_shader) {
 		m_shader = NodeHelper::CreateShader(ctx, cs);
@@ -110,9 +109,9 @@ void RKAdvect::Execute(const std::shared_ptr<dag::Context>& ctx, const ur::Textu
 
 	auto rc = std::static_pointer_cast<RenderContext>(ctx);
 
-	rc->ur_ctx->SetTexture(m_shader->QueryTexSlot("velocities_READ"), v);
-	rc->ur_ctx->SetTexture(m_shader->QueryTexSlot("field_READ"), read);
-	rc->ur_ctx->SetImage(m_shader->QueryImgSlot("field_WRITE"), write, ur::AccessType::WriteOnly);
+	rc->ur_ctx->SetTexture(m_shader->QueryTexSlot("velocities_READ"), velocities);
+	rc->ur_ctx->SetTexture(m_shader->QueryTexSlot("field_READ"), field_read);
+	rc->ur_ctx->SetImage(m_shader->QueryImgSlot("field_WRITE"), field_write, ur::AccessType::WriteOnly);
 
 	rc->ur_ds.program = m_shader;
 	int x, y, z;

@@ -14,8 +14,8 @@ const char* cs = R"(
 
 layout(local_size_x = 32, local_size_y = 32) in;
 
-layout(rgba32f, binding = 0) uniform image2D tex_READ;
-layout(rgba32f, binding = 1) uniform image2D tex_WRITE;
+layout(rgba32f) uniform image2D tex_READ;
+layout(rgba32f) uniform image2D tex_WRITE;
 
 void main()
 {
@@ -35,25 +35,25 @@ namespace node
 
 void Copy::Execute(const std::shared_ptr<dag::Context>& ctx)
 {
-	if (!IsDirty()) {
-		return;
-	}
+	//if (!IsDirty()) {
+	//	return;
+	//}
 
 	m_shader = NodeHelper::CreateShader(ctx, cs);
 	if (!m_shader) {
 		return;
 	}
 
-	auto read_tex = NodeHelper::GetInputTex(*this, ID_READ);
-	auto write_tex = NodeHelper::GetInputTex(*this, ID_WRITE);
-	if (!read_tex || !write_tex) {
+	auto src_tex = NodeHelper::GetInputTex(*this, ID_SRC);
+	auto dst_tex = NodeHelper::GetInputTex(*this, ID_DST);
+	if (!src_tex || !dst_tex) {
 		return;
 	}
 
 	auto rc = std::static_pointer_cast<RenderContext>(ctx);
 
-	rc->ur_ctx->SetImage(m_shader->QueryImgSlot("tex_READ"), read_tex, ur::AccessType::ReadOnly);
-	rc->ur_ctx->SetImage(m_shader->QueryImgSlot("tex_WRITE"), write_tex, ur::AccessType::WriteOnly);
+	rc->ur_ctx->SetImage(m_shader->QueryImgSlot("tex_READ"), src_tex, ur::AccessType::ReadOnly);
+	rc->ur_ctx->SetImage(m_shader->QueryImgSlot("tex_WRITE"), dst_tex, ur::AccessType::WriteOnly);
 
 	rc->ur_ds.program = m_shader;
 	int x, y, z;
@@ -62,7 +62,7 @@ void Copy::Execute(const std::shared_ptr<dag::Context>& ctx)
 
 	rc->ur_ctx->MemoryBarrier({ ur::BarrierType::ShaderImageAccess });
 
-	SetDirty(false);
+	//SetDirty(false);
 }
 
 }
