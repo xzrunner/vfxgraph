@@ -70,6 +70,21 @@
     <ClCompile Include="..\..\..\source\RegistRTTR.cpp">
       <Filter>tools\rtti</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\source\node\DivCurl.cpp">
+      <Filter>nodes\fluid2d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\node\ApplyVorticity.cpp">
+      <Filter>nodes\fluid2d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\node\UpdateQAndTheta.cpp">
+      <Filter>nodes\fluid2d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\node\SolvePressure.cpp">
+      <Filter>nodes\fluid2d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\node\PressureProjection.cpp">
+      <Filter>nodes\fluid2d</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\include\vfxgraph\Node.h">
@@ -153,6 +168,27 @@
       <Filter>nodes\fluid2d</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\include\vfxgraph\node\BuoyantForce.parm.h">
+      <Filter>nodes\fluid2d</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\vfxgraph\node\DivCurl.h">
+      <Filter>nodes\fluid2d</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\vfxgraph\node\ApplyVorticity.h">
+      <Filter>nodes\fluid2d</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\vfxgraph\node\UpdateQAndTheta.h">
+      <Filter>nodes\fluid2d</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\vfxgraph\node\SolvePressure.h">
+      <Filter>nodes\fluid2d</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\vfxgraph\node\RBMethod.parm.h">
+      <Filter>nodes\fluid2d</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\vfxgraph\node\SolvePressure.parm.h">
+      <Filter>nodes\fluid2d</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\vfxgraph\node\PressureProjection.h">
       <Filter>nodes\fluid2d</Filter>
     </ClInclude>
   </ItemGroup>

@@ -72,7 +72,6 @@
 #define PARM_NODE_NAME mc_advect
 #include EXE_FILEPATH
 
-#define NO_PARM_FILEPATH
 #define PARM_NODE_TYPE RBMethod
 #define PARM_NODE_NAME rb_method
 #include EXE_FILEPATH
@@ -84,4 +83,28 @@
 
 #define PARM_NODE_TYPE BuoyantForce
 #define PARM_NODE_NAME buoyant_force
+#include EXE_FILEPATH
+
+#define NO_PARM_FILEPATH
+#define PARM_NODE_TYPE DivCurl
+#define PARM_NODE_NAME div_curl
+#include EXE_FILEPATH
+
+#define NO_PARM_FILEPATH
+#define PARM_NODE_TYPE ApplyVorticity
+#define PARM_NODE_NAME apply_vorticity
+#include EXE_FILEPATH
+
+#define NO_PARM_FILEPATH
+#define PARM_NODE_TYPE UpdateQAndTheta
+#define PARM_NODE_NAME update_q_and_theta
+#include EXE_FILEPATH
+
+#define PARM_NODE_TYPE SolvePressure
+#define PARM_NODE_NAME solve_pressure
+#include EXE_FILEPATH
+
+#define NO_PARM_FILEPATH
+#define PARM_NODE_TYPE PressureProjection
+#define PARM_NODE_NAME pressure_projection
 #include EXE_FILEPATH

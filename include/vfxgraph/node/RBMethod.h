@@ -33,8 +33,6 @@ public:
     virtual void Execute(const std::shared_ptr<dag::Context>& ctx = nullptr) override;
 
 private:
-    int m_jacobi_iterations = 50;
-
     std::shared_ptr<ur::ShaderProgram> m_div_rb_shader           = nullptr;
     std::shared_ptr<ur::ShaderProgram> m_jacobi_black_shader     = nullptr;
     std::shared_ptr<ur::ShaderProgram> m_jacobi_red_shader       = nullptr;
@@ -44,6 +42,10 @@ private:
     ur::TexturePtr m_pressure_tex = nullptr;
 
     RTTR_ENABLE(Node)
+
+#define PARM_FILEPATH "vfxgraph/node/RBMethod.parm.h"
+#include <dag/node_parms_gen.h>
+#undef PARM_FILEPATH
 
 }; // RBMethod
 
