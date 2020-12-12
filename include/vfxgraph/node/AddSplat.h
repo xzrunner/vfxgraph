@@ -28,10 +28,10 @@ public:
 
     enum InputID
     {
-        ID_TEX = 1,
-        ID_POS,
-        ID_COLOR,
-        ID_INTENSITY,
+        I_TEX = 1,
+        I_POS,
+        I_COLOR,
+        I_INTENSITY,
     };
 
     virtual void Execute(const std::shared_ptr<dag::Context>& ctx = nullptr) override;

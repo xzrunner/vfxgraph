@@ -27,7 +27,7 @@ public:
 
     enum InputID
     {
-        ID_VELOCITIES = 1,
+        I_VELOCITIES = 1,
     };
 
     virtual void Execute(const std::shared_ptr<dag::Context>& ctx = nullptr) override;

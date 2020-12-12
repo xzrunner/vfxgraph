@@ -24,23 +24,14 @@ uniform UBO
 };
 
 layout(rgba32f) uniform image2D field;
-uniform sampler2D field_READ;
-
-vec2 pixelToTexel(in vec2 p, in vec2 tSize)
-{
-	return (p + 0.5) / tSize;
-}
 
 void main()
 {
-	vec2 tSize = textureSize(field_READ, 0);
 	ivec2 pixelCoords = ivec2(gl_GlobalInvocationID.xy);
 	vec2 p = vec2(pixelCoords - spotPos);
 
 	vec3 splat = intensity * exp(- dot(p, p) / 200.0f) * color;
-
-	vec3 baseD = texture(field_READ, pixelToTexel(pixelCoords, tSize)).xyz;
-	//vec3 baseD = imageLoad(field, pixelCoords).xyz;
+	vec3 baseD = imageLoad(field, pixelCoords).xyz;
 
 	imageStore(field, pixelCoords, vec4(baseD + splat, 1.0f));
 }
@@ -56,22 +47,22 @@ namespace node
 
 void AddSplat::Execute(const std::shared_ptr<dag::Context>& ctx)
 {
-	//if (!IsDirty()) {
-	//	return;
-	//}
+	if (!IsDirty()) {
+		return;
+	}
 
 	if (!m_shader) {
 		m_shader = NodeHelper::CreateShader(ctx, cs);
 	}
 
-	auto tex = NodeHelper::GetInputTex(*this, ID_TEX);
+	auto tex = NodeHelper::GetInputTex(*this, I_TEX);
 	if (!tex) {
 		return;
 	}
 
 	auto u_spot_pos = m_shader->QueryUniform("spotPos");
 	assert(u_spot_pos);
-	auto f2 = NodeHelper::GetInputFloat2(*this, ID_POS);
+	auto f2 = NodeHelper::GetInputFloat2(*this, I_POS);
 	sm::ivec2 pos;
 	if (f2)
 	{
@@ -82,22 +73,21 @@ void AddSplat::Execute(const std::shared_ptr<dag::Context>& ctx)
 
 	auto u_color = m_shader->QueryUniform("color");
 	assert(u_color);
-	auto color = NodeHelper::GetInputFloat3(*this, ID_COLOR);
+	auto color = NodeHelper::GetInputFloat3(*this, I_COLOR);
 	if (color) {
 		u_color->SetValue(color, 3);
 	}
 
 	auto u_intensity = m_shader->QueryUniform("intensity");
 	assert(u_intensity);
-	auto intensity = NodeHelper::GetInputFloat(*this, ID_INTENSITY);
+	auto intensity = NodeHelper::GetInputFloat(*this, I_INTENSITY);
 	if (intensity) {
 		u_intensity->SetValue(&intensity, 1);
 	}
 
 	auto rc = std::static_pointer_cast<RenderContext>(ctx);
 
-	rc->ur_ctx->SetImage(m_shader->QueryImgSlot("field"), tex, ur::AccessType::WriteOnly);
-	rc->ur_ctx->SetTexture(m_shader->QueryTexSlot("field_READ"), tex);
+	rc->ur_ctx->SetImage(m_shader->QueryImgSlot("field"), tex, ur::AccessType::ReadWrite);
 
 	rc->ur_ds.program = m_shader;
 	int x, y, z;

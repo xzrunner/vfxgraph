@@ -288,7 +288,7 @@ void RBMethod::Execute(const std::shared_ptr<dag::Context>& ctx)
 		m_pressure_tex = rc->ur_dev->CreateTexture(desc);
 	}
 
-	auto velocities_tex = NodeHelper::GetInputTex(*this, ID_VELOCITIES);
+	auto velocities_tex = NodeHelper::GetInputTex(*this, I_VELOCITIES);
 	if (!velocities_tex) {
 		return;
 	}

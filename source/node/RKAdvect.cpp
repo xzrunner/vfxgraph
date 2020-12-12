@@ -83,13 +83,13 @@ std::shared_ptr<ur::ShaderProgram> RKAdvect::m_shader = nullptr;
 
 void RKAdvect::Execute(const std::shared_ptr<dag::Context>& ctx)
 {
-	auto velocities_tex = NodeHelper::GetInputTex(*this, ID_VELOCITIES);
-	auto field_tex = NodeHelper::GetInputTex(*this, ID_FIELD);
+	auto velocities_tex = NodeHelper::GetInputTex(*this, I_VELOCITIES);
+	auto field_tex = NodeHelper::GetInputTex(*this, I_FIELD);
 	if (!velocities_tex || !field_tex) {
 		return;
 	}
 
-	float dt = NodeHelper::GetInputFloat(*this, ID_DT);
+	float dt = NodeHelper::GetInputFloat(*this, I_DT);
 	Execute(ctx, velocities_tex, field_tex, field_tex, dt);
 }
 

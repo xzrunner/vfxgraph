@@ -27,8 +27,8 @@ public:
 
     enum InputID
     {
-        ID_SRC = 1,
-        ID_DST
+        I_SRC = 1,
+        I_DST
     };
 
     virtual void Execute(const std::shared_ptr<dag::Context>& ctx = nullptr) override;
