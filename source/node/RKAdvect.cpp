@@ -99,9 +99,6 @@ void RKAdvect::Execute(const std::shared_ptr<dag::Context>& ctx, const ur::Textu
 	if (!m_shader) {
 		m_shader = NodeHelper::CreateShader(ctx, cs);
 	}
-	if (!m_shader) {
-		return;
-	}
 
 	auto u_dt = m_shader->QueryUniform("dt");
 	assert(u_dt);

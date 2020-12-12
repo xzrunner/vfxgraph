@@ -39,9 +39,6 @@
     <ClCompile Include="..\..\..\source\node\value_nodes.cpp">
       <Filter>nodes\common\value</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\include\vfxgraph\RegistRTTR.cpp">
-      <Filter>tools\rtti</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\source\VfxGraph.cpp" />
     <ClCompile Include="..\..\..\source\DrawList.cpp">
       <Filter>dataset</Filter>
@@ -66,6 +63,9 @@
     </ClCompile>
     <ClCompile Include="..\..\..\source\node\MaxReduce.cpp">
       <Filter>nodes\fluid2d</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\source\RegistRTTR.cpp">
+      <Filter>tools\rtti</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -114,9 +114,6 @@ void MCAdvect::Execute(const std::shared_ptr<dag::Context>& ctx)
 	if (!m_shader) {
 		m_shader = NodeHelper::CreateShader(ctx, cs);
 	}
-	if (!m_shader) {
-		return;
-	}
 
 	auto rc = std::static_pointer_cast<RenderContext>(ctx);
 	if (!m_temp_texs[0]) 

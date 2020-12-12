@@ -40,7 +40,6 @@
     <ClInclude Include="..\..\..\include\vfxgraph\VfxGraph.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\include\vfxgraph\RegistRTTR.cpp" />
     <ClCompile Include="..\..\..\source\DrawList.cpp" />
     <ClCompile Include="..\..\..\source\Node.cpp" />
     <ClCompile Include="..\..\..\source\NodeHelper.cpp" />
@@ -52,6 +51,7 @@
     <ClCompile Include="..\..\..\source\node\RKAdvect.cpp" />
     <ClCompile Include="..\..\..\source\node\Texture.cpp" />
     <ClCompile Include="..\..\..\source\node\value_nodes.cpp" />
+    <ClCompile Include="..\..\..\source\RegistRTTR.cpp" />
     <ClCompile Include="..\..\..\source\VfxGraph.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

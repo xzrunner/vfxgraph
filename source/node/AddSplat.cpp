@@ -60,9 +60,8 @@ void AddSplat::Execute(const std::shared_ptr<dag::Context>& ctx)
 		return;
 	}
 
-	m_shader = NodeHelper::CreateShader(ctx, cs);
 	if (!m_shader) {
-		return;
+		m_shader = NodeHelper::CreateShader(ctx, cs);
 	}
 
 	auto tex = NodeHelper::GetInputTex(*this, ID_TEX);
