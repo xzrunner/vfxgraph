@@ -14,12 +14,14 @@
     <ClInclude Include="..\..\..\include\vfxgraph\DrawList.h" />
     <ClInclude Include="..\..\..\include\vfxgraph\Node.h" />
     <ClInclude Include="..\..\..\include\vfxgraph\NodeHelper.h" />
+    <ClInclude Include="..\..\..\include\vfxgraph\node\math_nodes.h" />
     <ClInclude Include="..\..\..\include\vfxgraph\node\AddSplat.h" />
     <ClInclude Include="..\..\..\include\vfxgraph\node\Copy.h" />
     <ClInclude Include="..\..\..\include\vfxgraph\node\Float2.parm.h" />
     <ClInclude Include="..\..\..\include\vfxgraph\node\Float.parm.h" />
     <ClInclude Include="..\..\..\include\vfxgraph\node\Float3.parm.h" />
     <ClInclude Include="..\..\..\include\vfxgraph\node\Float4.parm.h" />
+    <ClInclude Include="..\..\..\include\vfxgraph\node\MaxReduce.h" />
     <ClInclude Include="..\..\..\include\vfxgraph\node\MCAdvect.h" />
     <ClInclude Include="..\..\..\include\vfxgraph\node\RBMethod.h" />
     <ClInclude Include="..\..\..\include\vfxgraph\node\RKAdvect.h" />
@@ -44,6 +46,7 @@
     <ClCompile Include="..\..\..\source\NodeHelper.cpp" />
     <ClCompile Include="..\..\..\source\node\AddSplat.cpp" />
     <ClCompile Include="..\..\..\source\node\Copy.cpp" />
+    <ClCompile Include="..\..\..\source\node\MaxReduce.cpp" />
     <ClCompile Include="..\..\..\source\node\MCAdvect.cpp" />
     <ClCompile Include="..\..\..\source\node\RBMethod.cpp" />
     <ClCompile Include="..\..\..\source\node\RKAdvect.cpp" />

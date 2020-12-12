@@ -64,6 +64,9 @@
     <ClCompile Include="..\..\..\source\node\AddSplat.cpp">
       <Filter>nodes\fluid2d</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\source\node\MaxReduce.cpp">
+      <Filter>nodes\fluid2d</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\include\vfxgraph\Node.h">
@@ -136,6 +139,12 @@
     </ClInclude>
     <ClInclude Include="..\..\..\include\vfxgraph\node\AddSplat.h">
       <Filter>nodes\fluid2d</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\vfxgraph\node\MaxReduce.h">
+      <Filter>nodes\fluid2d</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\vfxgraph\node\math_nodes.h">
+      <Filter>nodes\common</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

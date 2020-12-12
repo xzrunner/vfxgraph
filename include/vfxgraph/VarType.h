@@ -9,6 +9,8 @@ enum class VarType
 
 	Port,
 
+	Any,
+
 	Float,
 	Float2,
 	Float3,

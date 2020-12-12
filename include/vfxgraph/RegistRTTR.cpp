@@ -1,4 +1,5 @@
 #include "vfxgraph/node/value_nodes.h"
+#include "vfxgraph/node/math_nodes.h"
 
 #define EXE_FILEPATH "vfxgraph/node_include_gen.h"
 #include "vfxgraph/node_regist_cfg.h"
