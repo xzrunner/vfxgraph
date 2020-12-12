@@ -81,3 +81,7 @@
 #define PARM_NODE_TYPE MaxReduce
 #define PARM_NODE_NAME max_reduce
 #include EXE_FILEPATH
+
+#define PARM_NODE_TYPE BuoyantForce
+#define PARM_NODE_NAME buoyant_force
+#include EXE_FILEPATH

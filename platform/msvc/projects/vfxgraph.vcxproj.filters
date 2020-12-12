@@ -64,6 +64,9 @@
     <ClCompile Include="..\..\..\source\node\MaxReduce.cpp">
       <Filter>nodes\fluid2d</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\source\node\BuoyantForce.cpp">
+      <Filter>nodes\fluid2d</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\source\RegistRTTR.cpp">
       <Filter>tools\rtti</Filter>
     </ClCompile>
@@ -145,6 +148,12 @@
     </ClInclude>
     <ClInclude Include="..\..\..\include\vfxgraph\node\math_nodes.h">
       <Filter>nodes\common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\vfxgraph\node\BuoyantForce.h">
+      <Filter>nodes\fluid2d</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\vfxgraph\node\BuoyantForce.parm.h">
+      <Filter>nodes\fluid2d</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -56,9 +56,9 @@ namespace node
 
 void AddSplat::Execute(const std::shared_ptr<dag::Context>& ctx)
 {
-	if (!IsDirty()) {
-		return;
-	}
+	//if (!IsDirty()) {
+	//	return;
+	//}
 
 	if (!m_shader) {
 		m_shader = NodeHelper::CreateShader(ctx, cs);
